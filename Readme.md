@@ -22,5 +22,19 @@ some config
 `- try to run with go run main.go` and don't forget to start database services
 
 
+### TodoList
+- [x] Register
+- [x] Login
+- [x] Logout
+- [x] Connect database
+- [x] Cookies integrated
+- [x] Jwt Integrated
+- [ ] Reset Password
+- [ ] Output Format
+- [ ] Sending Email
+- [ ] Deploy
+- [ ] Test
 
-### Thank Krub :3
+
+
+## Thank Krub :3
