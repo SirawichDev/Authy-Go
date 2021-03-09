@@ -1,28 +1,19 @@
 package main
 
 import (
-	"fmt"
+	"demo/database"
+	"demo/routes"
 	"github.com/gofiber/fiber/v2"
-	"gorm.io/driver/mysql"
-	"gorm.io/gorm"
-	"log"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 )
-type User struct {
-	Name string
-}
 
 func main() {
-	db, err := gorm.Open(mysql.Open(""), &gorm.Config{})
-
-	if err != nil {
-		panic("Cloud not connect to database ⚠️")
-	}
-	fmt.Print(db)
+	database.Connect()
 	app := fiber.New()
+	app.Use(cors.New(cors.Config{
+		AllowCredentials: true,
+	}))
+	routes.Setup(app)
+	app.Listen(":3000")
+}
 
-	app.Get("/", home)
-	log.Fatal(app.Listen(":3000"))
-}
-func home(c *fiber.Ctx) error {
-	return c.SendString("Hello xxx")
-}
